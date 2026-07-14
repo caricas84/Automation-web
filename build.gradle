@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.46'
+}
+
+group = 'com.reto'
+version = '1.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityVersion = '4.0.46'
+}
+
+dependencies {
+
+    // Serenity
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+
+    // Logging
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
+
+    // WebDriver
+    implementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'io.cucumber:cucumber-junit:6.11.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnit()
+}
