@@ -163,19 +163,6 @@ Clonar el repositorio
 git clone https://github.com/caricas84/Automation-web.git
 ```
 
-## Ejecución
-
-Ejecutar todas las pruebas
-
-```bash
-gradlew clean test
-```
-Generar reporte Serenity
-
-```bash
-gradlew serenityAggregate
-```
-
 ## Reportes
 
 Después de la ejecución, Serenity genera automáticamente un reporte HTML con:
