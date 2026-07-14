@@ -44,15 +44,30 @@ El objetivo del proyecto es demostrar buenas prácticas de automatización, sepa
 El proyecto implementa el patrón **Screenplay**, el cual organiza la automatización en diferentes responsabilidades:
 
 ```
-Actor
-    │
-    ▼
-Task
-    │
-    ▼
-User Interface
-    │
-    ▼
+                +----------------+
+                |     Feature    |
+                +----------------+
+                         |
+                         ▼
+                +----------------+
+                | StepDefinition |
+                +----------------+
+                         |
+                         ▼
+                +----------------+
+                |     Actor      |
+                +----------------+
+                         |
+        +----------------+----------------+
+        ▼                                 ▼
++----------------+               +----------------+
+|     Tasks      |               |   Questions    |
++----------------+               +----------------+
+        |                                 |
+        ▼                                 ▼
++----------------+               +----------------+
+| User Interface |               |   Assertions   |
++----------------+               +----------------+
 Question
 ```
 
@@ -147,3 +162,30 @@ Clonar el repositorio
 ```bash
 git clone https://github.com/caricas84/Automation-web.git
 ```
+
+## Ejecución
+
+Ejecutar todas las pruebas
+
+```bash
+gradlew clean test
+```
+Generar reporte Serenity
+
+```bash
+gradlew serenityAggregate
+```
+
+## Reportes
+
+Después de la ejecución, Serenity genera automáticamente un reporte HTML con:
+
+- Escenarios ejecutados
+- Evidencias
+- Capturas
+- Tiempo de ejecución
+- Resultado por escenario
+
+Ruta:
+
+target/site/serenity/index.html
